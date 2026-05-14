@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aayushi Patel | Marketing Intelligence Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d1a0f;
+    --bg2: #111f13;
+    --bg3: #172119;
+    --accent: #3ddc6e;
+    --accent2: #ff6b35;
+    --accent3: #ffe14d;
+    --text: #f5f0e8;
+    --muted: #7a9080;
+    --border: rgba(245,240,232,0.08);
+    --border2: rgba(245,240,232,0.14);
+    --font-display: 'Syne', sans-serif;
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-display);
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* — Custom Cursor — */
+  .cursor-dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s;
+  }
+  .cursor-ring {
+    width: 32px; height: 32px;
+    border: 1px solid rgba(61,220,110,0.45);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease, width 0.2s, height 0.2s, border-color 0.2s;
+  }
+
+  /* — Nav — */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    padding: 1.4rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(13,26,15,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+  .nav-links {
+    display: flex; gap: 2.5rem; list-style: none;
+  }
+  .nav-links a {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--bg);
+    background: var(--accent);
+    padding: 0.5rem 1.2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: opacity 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* — Hero — */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 7rem 3rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(61,220,110,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(61,220,110,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(61,220,110,0.07) 0%, transparent 70%);
+    top: 10%; left: -10%;
+    pointer-events: none;
+  }
+  .hero-left { position: relative; z-index: 2; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(61,220,110,0.28);
+    padding: 0.4rem 0.9rem;
+  }
+  .hero-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: blink 1.5s infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  .hero-name {
+    font-family: var(--font-serif);
+    font-size: clamp(3.5rem, 7vw, 6.5rem);
+    font-weight: 300;
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.3rem;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(0.8rem, 1.2vw, 1rem);
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+  }
+  .hero-desc {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(245,240,232,0.7);
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 0.85rem 2rem;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-secondary {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--border2);
+    color: var(--text);
+    padding: 0.85rem 2rem;
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .btn-secondary:hover { border-color: rgba(245,240,232,0.4); }
+
+  .hero-right {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column; gap: 1rem;
+    padding-left: 4rem;
+  }
+  .hero-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .stat-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+  }
+  .stat-card.accent2::before { background: var(--accent2); }
+  .stat-card.accent3::before { background: var(--accent3); }
+  .stat-num {
+    font-family: var(--font-serif);
+    font-size: 2.8rem;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .stat-card.accent2 .stat-num { color: var(--accent2); }
+  .stat-card.accent3 .stat-num { color: var(--accent3); }
+  .stat-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .skill-pills {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  .pill {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--border2);
+    color: var(--muted);
+    padding: 0.3rem 0.7rem;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .pill:hover { border-color: var(--accent); color: var(--accent); }
+  .pill.active { border-color: var(--accent); color: var(--accent); }
+
+  /* — Section Base — */
+  section { padding: 6rem 3rem; }
+  .section-header {
+    display: flex; align-items: baseline; gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+  .section-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+  }
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    line-height: 1.1;
+  }
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    margin-left: 1rem;
+  }
+
+  /* — About — */
+  #about { background: var(--bg2); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .about-text {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.85;
+    color: rgba(245,240,232,0.75);
+  }
+  .about-text p + p { margin-top: 1.5rem; }
+  .about-text strong { color: var(--accent); font-weight: 400; }
+  .skills-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+  }
+  .skill-group {}
+  .skill-group-title {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(61,220,110,0.18);
+  }
+  .skill-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.4rem 0;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+  }
+  .skill-bar {
+    width: 60px; height: 2px;
+    background: var(--border2);
+    position: relative;
+    overflow: hidden;
+  }
+  .skill-bar-fill {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    background: var(--accent);
+  }
+
+  /* — Projects — */
+  #projects { background: var(--bg); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5px;
+  }
+
+  .project-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .project-card:hover {
+    border-color: var(--border2);
+    transform: translateY(-2px);
+  }
+  .project-card.wide { grid-column: span 8; }
+  .project-card.narrow { grid-column: span 4; }
+  .project-card.half { grid-column: span 6; }
+
+  .project-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 3px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .project-card:hover::after { opacity: 1; }
+  .card-accent-lime::after { background: var(--accent); }
+  .card-accent-coral::after { background: var(--accent2); }
+  .card-accent-cyan::after { background: var(--accent3); }
+  .card-accent-purple::after { background: #ff6b35; }
+  .card-accent-rose::after { background: #ffe14d; }
+  .card-accent-gold::after { background: #3ddc6e; }
+
+  .project-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex; gap: 0.8rem; flex-wrap: wrap;
+  }
+  .eyebrow-tag {
+    padding: 0.2rem 0.6rem;
+    border: 1px solid var(--border2);
+    color: var(--muted);
+  }
+  .eyebrow-tag.highlight {
+    border-color: rgba(61,220,110,0.35);
+    color: var(--accent);
+  }
+  .project-title {
+    font-family: var(--font-serif);
+    font-size: 1.7rem;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+  }
+  .project-subtitle {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+    line-height: 1.5;
+  }
+  .project-desc {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: rgba(245,240,232,0.6);
+    margin-bottom: 1.5rem;
+  }
+  .project-tech {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+    margin-bottom: 1.5rem;
+  }
+  .tech-tag {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    background: var(--bg3);
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
+  .project-metrics {
+    display: flex; gap: 1.5rem; flex-wrap: wrap;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--border);
+  }
+  .metric {
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .metric-val {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 300;
+  }
+  .metric-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .project-visual {
+    position: absolute; top: 0; right: 0; bottom: 0;
+    width: 38%;
+    overflow: hidden;
+    opacity: 0.18;
+    transition: opacity 0.3s;
+  }
+  .project-card:hover .project-visual { opacity: 0.28; }
+  .project-visual canvas { width: 100%; height: 100%; }
+
+  /* — Experience Bar — */
+  #skills-section { background: var(--bg2); }
+  .skills-showcase {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .skill-showcase-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    position: relative;
+  }
+  .skill-showcase-icon {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .skill-showcase-name {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .skill-showcase-desc {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+  }
+  .skill-level-bar {
+    height: 2px;
+    background: var(--border2);
+    margin-bottom: 0.4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .skill-level-fill {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    transition: width 1s ease;
+  }
+  .skill-level-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex; justify-content: space-between;
+  }
+
+  /* — Education & Journey — */
+  #journey { background: var(--bg); }
+  .timeline {
+    position: relative;
+    padding-left: 3rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 0.4rem; bottom: 0;
+    width: 1px;
+    background: var(--border2);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute; left: -3rem;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    top: 0.4rem;
+    transform: translateX(-3.5px);
+  }
+  .timeline-date {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  .timeline-title {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: 0.3rem;
+  }
+  .timeline-sub {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.8rem;
+  }
+  .timeline-desc {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: rgba(245,240,232,0.6);
+    line-height: 1.7;
+  }
+
+  /* — Contact — */
+  #contact {
+    background: var(--bg2);
+    text-align: center;
+  }
+  .contact-headline {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+  .contact-headline em { font-style: italic; color: var(--accent); }
+  .contact-sub {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--muted);
+    max-width: 500px;
+    margin: 0 auto 3rem;
+    line-height: 1.7;
+  }
+  .contact-links {
+    display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;
+  }
+  .contact-link {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    border: 1px solid var(--border2);
+    padding: 0.8rem 1.5rem;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); }
+  .contact-link svg { width: 14px; height: 14px; }
+
+  /* — Footer — */
+  footer {
+    padding: 2rem 3rem;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    background: var(--bg);
+  }
+  .footer-copy {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+  .footer-built {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+  .footer-built span { color: var(--accent); }
+
+  /* Marquee */
+  .marquee-section {
+    padding: 1.5rem 0;
+    background: var(--accent);
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .marquee-track {
+    display: inline-flex;
+    animation: marquee 25s linear infinite;
+  }
+  .marquee-item {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bg);
+    padding: 0 2rem;
+  }
+  .marquee-sep { color: rgba(13,26,15,0.4); }
+  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* Animate on scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 900px) {
+    #hero { grid-template-columns: 1fr; padding-top: 6rem; }
+    .hero-right { padding-left: 0; margin-top: 3rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .skills-showcase { grid-template-columns: 1fr; }
+    .project-card.wide, .project-card.narrow, .project-card.half {
+      grid-column: span 12;
+    }
+    nav { padding: 1.2rem 1.5rem; }
+    section { padding: 4rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">AP / Portfolio</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills-section">Skills</a></li>
+    <li><a href="#journey">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:aapatel15@usfca.edu" class="nav-cta">Hire Me →</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-left reveal">
+    <div class="hero-tag">Open to Work · Graduating June 2026</div>
+    <h1 class="hero-name">
+      Aayushi<br><em>Patel</em>
+    </h1>
+    <p class="hero-title">Marketing Intelligence · Data Analytics · Strategic Insights</p>
+    <p class="hero-desc">
+      Master's candidate at USF turning complex data into bold marketing decisions. Fluent in R, SQL, Tableau, and the art of making a CMO say <em>"how did we not see this?"</em>
+    </p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View Work</a>
+      <a href="#contact" class="btn-secondary">Get in Touch</a>
+    </div>
+  </div>
+
+  <div class="hero-right reveal" style="transition-delay:0.2s">
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-num" style="color:var(--accent)">6</div>
+        <div class="stat-label">Projects Completed</div>
+      </div>
+      <div class="stat-card accent2">
+        <div class="stat-num">4+</div>
+        <div class="stat-label">Tech Tools Mastered</div>
+      </div>
+      <div class="stat-card accent3">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Brand Campaigns Analyzed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num" style="color:var(--accent)">USF</div>
+        <div class="stat-label">MSMI · Class of 2026</div>
+      </div>
+    </div>
+    <div class="skill-pills" style="margin-top:1.5rem">
+      <span class="pill active">R / ggplot2</span>
+      <span class="pill active">SQL</span>
+      <span class="pill active">Tableau</span>
+      <span class="pill">Python</span>
+      <span class="pill">SEMrush</span>
+      <span class="pill">Figma</span>
+      <span class="pill">Data Viz</span>
+      <span class="pill">Consumer Behavior</span>
+      <span class="pill">Marketing Analytics</span>
+      <span class="pill">A/B Testing</span>
+      <span class="pill">Campaign Analysis</span>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item">Marketing Intelligence <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Data-Driven Strategy <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">R Programming <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">SQL Analytics <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Tableau Visualization <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Consumer Behavior Research <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Digital Marketing Audit <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Experimental Design <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Campaign Performance Analysis <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Brand Lift Studies <span class="marquee-sep">✦</span></span>
+    <!-- repeat for seamless loop -->
+    <span class="marquee-item">Marketing Intelligence <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Data-Driven Strategy <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">R Programming <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">SQL Analytics <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Tableau Visualization <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Consumer Behavior Research <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Digital Marketing Audit <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Experimental Design <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Campaign Performance Analysis <span class="marquee-sep">✦</span></span>
+    <span class="marquee-item">Brand Lift Studies <span class="marquee-sep">✦</span></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header reveal">
+    <span class="section-num">01 /</span>
+    <h2 class="section-title">About Me</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>
+        I'm a <strong>Marketing Intelligence graduate student at the University of San Francisco</strong>, graduating June 2026. My work sits at the intersection of behavioral science, data analytics, and brand strategy — I don't just analyze data, I translate it into decisions that move businesses.
+      </p>
+      <p>
+        From running a <strong>live field experiment at Costco</strong> to decode how social norms shape purchase behavior, to uncovering why Wi-Fi availability counterintuitively hurts Airbnb listing performance — I approach every problem with a researcher's rigor and a marketer's instinct.
+      </p>
+      <p>
+        My technical toolkit spans <strong>R (statistical modeling, regression, ggplot2), SQL (e-commerce database analysis), Tableau (storytelling dashboards), SEMrush & Figma (digital marketing audits)</strong>. I'm actively building Python proficiency as I pursue a career in marketing analytics or consumer insights.
+      </p>
+      <p>
+        I'm <strong>actively seeking full-time roles</strong> in marketing analytics, consumer insights, or data-driven strategy — and I'm ready to start before graduation.
+      </p>
+    </div>
+    <div class="skills-grid reveal" style="transition-delay:0.15s">
+      <div class="skill-group">
+        <div class="skill-group-title">Technical</div>
+        <div class="skill-item">R / ggplot2<div class="skill-bar"><div class="skill-bar-fill" style="width:88%"></div></div></div>
+        <div class="skill-item">SQL<div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div></div>
+        <div class="skill-item">Tableau<div class="skill-bar"><div class="skill-bar-fill" style="width:85%"></div></div></div>
+        <div class="skill-item">Python<div class="skill-bar"><div class="skill-bar-fill" style="width:55%"></div></div></div>
+        <div class="skill-item">SEMrush<div class="skill-bar"><div class="skill-bar-fill" style="width:78%"></div></div></div>
+        <div class="skill-item">Figma<div class="skill-bar"><div class="skill-bar-fill" style="width:70%"></div></div></div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Domain</div>
+        <div class="skill-item">Marketing Analytics<div class="skill-bar"><div class="skill-bar-fill" style="width:90%"></div></div></div>
+        <div class="skill-item">Consumer Behavior<div class="skill-bar"><div class="skill-bar-fill" style="width:88%"></div></div></div>
+        <div class="skill-item">Experimental Design<div class="skill-bar"><div class="skill-bar-fill" style="width:82%"></div></div></div>
+        <div class="skill-item">Digital Marketing<div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div></div>
+        <div class="skill-item">Data Storytelling<div class="skill-bar"><div class="skill-bar-fill" style="width:92%"></div></div></div>
+        <div class="skill-item">Brand Strategy<div class="skill-bar"><div class="skill-bar-fill" style="width:78%"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header reveal">
+    <span class="section-num">02 /</span>
+    <h2 class="section-title">Selected Work</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- Airbnb — wide -->
+    <div class="project-card wide card-accent-lime reveal" style="grid-column:span 8">
+      <div class="project-eyebrow">
+        <span class="eyebrow-tag highlight">R Programming</span>
+        <span class="eyebrow-tag">Regression Analysis</span>
+        <span class="eyebrow-tag">Statistical Modeling</span>
+      </div>
+      <h3 class="project-title">Airbnb Market Analysis</h3>
+      <p class="project-subtitle">Unraveling the counterintuitive relationship between Wi-Fi availability and Airbnb listing performance</p>
+      <p class="project-desc">
+        Led statistical analysis in R to investigate how amenity signaling affects listing performance. Discovered a counterintuitive negative correlation between Wi-Fi availability and booking rates — revealing that overloaded amenity lists signal listing quality dilution to guests. Applied linear regression, data wrangling (dplyr, tidyr), and ggplot2 visualizations to surface actionable host optimization strategies.
+      </p>
+      <div class="project-tech">
+        <span class="tech-tag">R</span>
+        <span class="tech-tag">ggplot2</span>
+        <span class="tech-tag">dplyr</span>
+        <span class="tech-tag">Linear Regression</span>
+        <span class="tech-tag">Hypothesis Testing</span>
+        <span class="tech-tag">Data Wrangling</span>
+        <span class="tech-tag">Statistical Analysis</span>
+      </div>
+      <div class="project-metrics">
+        <div class="metric">
+          <span class="metric-val" style="color:var(--accent)">15</span>
+          <span class="metric-label">Slides / Findings</span>
+        </div>
+        <div class="metric">
+          <span class="metric-val" style="color:var(--accent)">R²</span>
+          <span class="metric-label">Regression Modeling</span>
+        </div>
+        <div class="metric">
+          <span class="metric-val" style="color:var(--accent)">Team</span>
+          <span class="metric-label">Collab Research</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Social Norms — narrow -->
+    <div class="project-card narrow card-accent-coral reveal" style="grid-column:span 4; transition-delay:0.1s">
+      <div class="project-eyebrow">
+        <span class="eyebrow-tag highlight">Field Experiment</span>
+        <span class="eyebrow-tag">Costco</span>
+      </div>
+      <h3 class="project-title">The Cost of Social Norms</h3>
+      <p class="project-subtitle">Social vs. Market Norms — helping behavior in the field</p>
+      <p class="project-desc">
+        Designed and conducted a live behavioral experiment at Costco to measure how framing (social vs. market norms) influences consumer helping behavior. Defined treatment/control groups, collected field data, and applied statistical tests to validate hypotheses rooted in Ariely's behavioral economics framework.
+      </p>
+      <div class="project-tech">
+        <span class="tech-tag">A/B Testing</span>
+        <span class="tech-tag">Experimental Design</span>
+        <span class="tech-tag">Behavioral Economics</span>
+        <span class="tech-tag">Field Research</span>
+        <span class="tech-tag">Statistical Testing</span>
+      </div>
+      <div class="project-metrics">
+        <div class="metric">
+          <span class="metric-val" style="color:var(--accent2)">Live</span>
+          <span class="metric-label">Field Study</span>
+        </div>
+        <div class="metric">
+          <span class="metric-val" style="color:var(--accent2)">21</span>
+          <span class="metric-label">Page Report</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- NFL — half -->
+    <div class="project-card half card-accent-gold reveal" style="transition-delay:0.05s">
+      <div class="project-eyebrow">
+        <span class="eyebrow-tag highlight">Tableau</span>
+        <span class="eyebrow-tag">Sports Analytics</span>
+        <span class="eyebrow-tag">Data Storytelling</span>
+      </div>
+      <h3 class="project-title">NFL Infographic Storytelling</h3>
+      <p class="project-subtitle">Dallas Cowboys vs. Cleveland Browns — a data-driven narrative</p>
+      <p class="project-desc">
+        Built a comprehensive Tableau infographic analyzing game performance across EPA (Expected Points Added), turnovers, QB efficiency, and defensive disruption. Delivered strategic, actionable recommendations for the Cleveland Browns roster and coaching staff. Final score: Dallas 33 – Cleveland 17.
+      </p>
+      <div class="project-tech">
+        <span class="tech-tag">Tableau</span>
+        <span class="tech-tag">EPA Metrics</span>
+        <span class="tech-tag">KPI Dashboard</span>
+        <span class="tech-tag">Data Visualization</span>
+        <span class="tech-tag">Sports Analytics</span>
+      </div>
+      <div class="project-metrics">
+        <div class="metric">
+          <span class="metric-val" style="color:#3ddc6e">EPA</span>
+          <span class="metric-label">Key Metric</span>
+        </div>
+        <div class="metric">
+          <span class="metric-val" style="color:#3ddc6e">33–17</span>
+          <span class="metric-label">Final Score</span>
+        </div>
+        <div class="metric">
+          <span class="metric-val" style="color:#3ddc6e">5+</span>
+          <span class="metric-label">KPI Views</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Canada Dry — half -->
+    <div class="project-card half card-accent-cyan reveal" style="transition-delay:0.1s">
+      <div class="project-eyebrow">
+        <span class="eyebrow-tag highlight">Tableau</span>
+        <span class="eyebrow-tag">Snapchat Campaign</span>
+        <span class="eyebrow-tag">Brand Strategy</span>
+      </div>
+      <h3 class="project-title">Canada Dry — Snapchat Storytelling</h3>
+      <p class="project-subtitle">Glacier & Peach — "Purely Refreshing. Naturally Bold."</p>
+      <p class="project-desc">
+        Developed a Tableau-driven storytelling deck for Canada Dry's new Glacier & Peach SKU targeting a Gen Z Snapchat audience. Analyzed audience psychographics, crafted persona-aligned campaign narratives, and visualized engagement funnel metrics to guide media spend decisions.
+      </p>
+      <div class="project-tech">
+        <span class="tech-tag">Tableau</span>
+        <span class="tech-tag">Consumer Segmentation</span>
+        <span class="tech-tag">Campaign Analytics</span>
+        <span class="tech-tag">Gen Z Targeting</span>
+        <span class="tech-tag">Brand Narrative</span>
+      </div>
+      <div class="project-metrics">
+        <div class="metric">
+          <span class="metric-val" style="color:var(--accent3)">Gen Z</span>
+          <span class="metric-label">Target Audience</span>
+        </div>
+        <div class="metric">
+          <span class="metric-val" style="color:var(--accent3)">Snap</span>
+          <span class="metric-label">Platform Focus</span>
+        </div>
+        <div class="metric">
+          <span class="metric-val" style="color:var(--accent3)">9</span>
+          <span class="metric-label">Deliverables</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Progressive — half -->
+    <div class="project-card half card-accent-purple reveal" style="transition-delay:0.05s">
+      <div class="project-eyebrow">
+        <span class="eyebrow-tag highlight">Tableau</span>
+        <span class="eyebrow-tag">Brand Lift</span>
+        <span class="eyebrow-tag">Insurance Analytics</span>
+      </div>
+      <h3 class="project-title">Progressive Insurance — Drive Into Tomorrow</h3>
+      <p class="project-subtitle">MVPD Campaign Performance, Brand-Lift & Strategic Insights</p>
+      <p class="project-desc">
+        Analyzed Progressive's multichannel MVPD advertising campaign using Tableau to quantify brand lift, message recall, and purchase intent across audience segments. Delivered CMO-ready strategic recommendations identifying optimal channel mix and audience targeting adjustments for maximum ROI.
+      </p>
+      <div class="project-tech">
+        <span class="tech-tag">Tableau</span>
+        <span class="tech-tag">MVPD Analytics</span>
+        <span class="tech-tag">Brand Lift</span>
+        <span class="tech-tag">Media Mix</span>
+        <span class="tech-tag">Campaign ROI</span>
+      </div>
+      <div class="project-metrics">
+        <div class="metric">
+          <span class="metric-val" style="color:#ff6b35">24</span>
+          <span class="metric-label">Slide Analysis</span>
+        </div>
+        <div class="metric">
+          <span class="metric-val" style="color:#ff6b35">CMO</span>
+          <span class="metric-label">Stakeholder</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Glide / SQL — half -->
+    <div class="project-card half card-accent-rose reveal" style="transition-delay:0.1s">
+      <div class="project-eyebrow">
+        <span class="eyebrow-tag highlight">SQL</span>
+        <span class="eyebrow-tag">E-Commerce</span>
+        <span class="eyebrow-tag highlight">Digital Audit</span>
+        <span class="eyebrow-tag">SEMrush · Figma</span>
+      </div>
+      <h3 class="project-title">Glide Digital Audit + SQL Revenue Analysis</h3>
+      <p class="project-subtitle">Two-pronged: SEO/digital audit for Glide (SF nonprofit) + SQL e-commerce channel risk analysis</p>
+      <p class="project-desc">
+        <strong style="color:var(--text)">Glide:</strong> Conducted a full digital marketing audit using SEMrush (organic search, backlink profile, competitor gap) and Figma (UX/CRO wireframing). <br><br>
+        <strong style="color:var(--text)">SQL:</strong> Queried an e-commerce database to identify revenue concentration risk — which marketing channels account for disproportionate revenue share and what the CMO should approve before a single-channel failure creates structural risk.
+      </p>
+      <div class="project-tech">
+        <span class="tech-tag">SQL</span>
+        <span class="tech-tag">SEMrush</span>
+        <span class="tech-tag">Figma</span>
+        <span class="tech-tag">SEO Analysis</span>
+        <span class="tech-tag">Revenue Attribution</span>
+        <span class="tech-tag">Channel Risk</span>
+        <span class="tech-tag">Digital Strategy</span>
+      </div>
+      <div class="project-metrics">
+        <div class="metric">
+          <span class="metric-val" style="color:#ffe14d">2</span>
+          <span class="metric-label">Projects</span>
+        </div>
+        <div class="metric">
+          <span class="metric-val" style="color:#ffe14d">USF</span>
+          <span class="metric-label">MSMI 605</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS SHOWCASE -->
+<section id="skills-section">
+  <div class="section-header reveal">
+    <span class="section-num">03 /</span>
+    <h2 class="section-title">Technical Arsenal</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="skills-showcase">
+    <div class="skill-showcase-card reveal">
+      <span class="skill-showcase-icon">⬡</span>
+      <div class="skill-showcase-name">R Programming</div>
+      <p class="skill-showcase-desc">Statistical computing for marketing research. Regression models, hypothesis testing, dplyr data wrangling, ggplot2 visualization, and predictive analytics pipelines.</p>
+      <div class="skill-level-bar"><div class="skill-level-fill" style="width:88%;background:var(--accent)"></div></div>
+      <div class="skill-level-label"><span>Proficiency</span><span style="color:var(--accent)">Advanced</span></div>
+    </div>
+    <div class="skill-showcase-card reveal" style="transition-delay:0.1s">
+      <span class="skill-showcase-icon">◈</span>
+      <div class="skill-showcase-name">SQL & Databases</div>
+      <p class="skill-showcase-desc">E-commerce database analysis, revenue attribution queries, channel concentration risk, CTEs, JOINs, aggregation functions, and CMO-ready data storytelling from raw tables.</p>
+      <div class="skill-level-bar"><div class="skill-level-fill" style="width:80%;background:var(--accent2)"></div></div>
+      <div class="skill-level-label"><span>Proficiency</span><span style="color:var(--accent2)">Proficient</span></div>
+    </div>
+    <div class="skill-showcase-card reveal" style="transition-delay:0.2s">
+      <span class="skill-showcase-icon">◆</span>
+      <div class="skill-showcase-name">Tableau</div>
+      <p class="skill-showcase-desc">Interactive dashboards, KPI storytelling, sports analytics, brand lift visualization, campaign performance charts, and executive-ready infographics across 3+ brand campaigns.</p>
+      <div class="skill-level-bar"><div class="skill-level-fill" style="width:85%;background:var(--accent3)"></div></div>
+      <div class="skill-level-label"><span>Proficiency</span><span style="color:var(--accent3)">Advanced</span></div>
+    </div>
+    <div class="skill-showcase-card reveal" style="transition-delay:0.05s">
+      <span class="skill-showcase-icon">⬟</span>
+      <div class="skill-showcase-name">Python (In Progress)</div>
+      <p class="skill-showcase-desc">Actively building expertise in pandas, NumPy, scikit-learn for predictive modeling. Targeting proficiency for marketing automation, NLP, and customer segmentation use cases.</p>
+      <div class="skill-level-bar"><div class="skill-level-fill" style="width:55%;background:#ff6b35"></div></div>
+      <div class="skill-level-label"><span>Proficiency</span><span style="color:#ff6b35">Developing →</span></div>
+    </div>
+    <div class="skill-showcase-card reveal" style="transition-delay:0.15s">
+      <span class="skill-showcase-icon">◉</span>
+      <div class="skill-showcase-name">SEMrush & Digital Audit</div>
+      <p class="skill-showcase-desc">Full-spectrum digital marketing audits covering organic search performance, backlink analysis, competitor gap mapping, keyword strategy, and content opportunity identification.</p>
+      <div class="skill-level-bar"><div class="skill-level-fill" style="width:78%;background:#3ddc6e"></div></div>
+      <div class="skill-level-label"><span>Proficiency</span><span style="color:#3ddc6e">Proficient</span></div>
+    </div>
+    <div class="skill-showcase-card reveal" style="transition-delay:0.25s">
+      <span class="skill-showcase-icon">◬</span>
+      <div class="skill-showcase-name">Experimental Design</div>
+      <p class="skill-showcase-desc">A/B testing methodology, treatment/control group design, statistical significance testing, field experiment execution, and behavioral economics application in real-world settings.</p>
+      <div class="skill-level-bar"><div class="skill-level-fill" style="width:82%;background:#ffe14d"></div></div>
+      <div class="skill-level-label"><span>Proficiency</span><span style="color:#ffe14d">Advanced</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY / EDUCATION -->
+<section id="journey">
+  <div class="section-header reveal">
+    <span class="section-num">04 /</span>
+    <h2 class="section-title">Education & Journey</h2>
+    <div class="section-line"></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem">
+    <div class="timeline reveal">
+      <div class="timeline-item">
+        <div class="timeline-date">2024 – June 2026</div>
+        <div class="timeline-title">M.S. Marketing Intelligence</div>
+        <div class="timeline-sub">University of San Francisco · San Francisco, CA</div>
+        <p class="timeline-desc">
+          Specialized graduate program combining marketing strategy, data analytics, consumer behavior research, and digital marketing. Coursework includes marketing analytics, consumer intelligence, digital marketing strategy, and data visualization. Projects span R, SQL, Tableau, SEMrush, and real-world brand campaigns.
+        </p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Current Focus</div>
+        <div class="timeline-title">Building Python & Advanced SQL</div>
+        <div class="timeline-sub">Self-Directed Technical Upskilling</div>
+        <p class="timeline-desc">
+          Actively pursuing Python for data science (pandas, scikit-learn, matplotlib) and advanced SQL for marketing attribution and funnel analysis — targeting entry into data-driven marketing roles that require end-to-end analytics capability.
+        </p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Graduating June 2026</div>
+        <div class="timeline-title">Available Immediately</div>
+        <div class="timeline-sub">Open to Full-Time Roles · Bay Area & Remote</div>
+        <p class="timeline-desc">
+          Actively seeking full-time positions in marketing analytics, consumer insights, growth analytics, or brand strategy. Ready to start before graduation. Open to roles at brands, agencies, and tech companies that value rigorous data work and creative thinking in equal measure.
+        </p>
+      </div>
+    </div>
+    <div class="reveal" style="transition-delay:0.15s">
+      <h3 style="font-family:var(--font-serif);font-size:1.5rem;font-weight:300;margin-bottom:2rem;color:var(--muted)">What I Bring to the Role</h3>
+      <div style="display:flex;flex-direction:column;gap:1rem">
+        <div style="background:var(--bg2);border:1px solid var(--border);padding:1.5rem;border-left:2px solid var(--accent)">
+          <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:0.5rem">Insight Generation</div>
+          <p style="font-family:var(--font-serif);font-size:0.95rem;font-weight:300;color:rgba(245,240,232,0.7);line-height:1.6">I find the non-obvious story in data — like how more amenities can hurt Airbnb performance, or how social norms outperform financial incentives in retail.</p>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);padding:1.5rem;border-left:2px solid var(--accent2)">
+          <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:0.5rem">Technical Range</div>
+          <p style="font-family:var(--font-serif);font-size:0.95rem;font-weight:300;color:rgba(245,240,232,0.7);line-height:1.6">I can go from SQL query to Tableau dashboard to executive deck — owning the full analytics-to-insight pipeline without handoffs.</p>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);padding:1.5rem;border-left:2px solid var(--accent3)">
+          <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent3);margin-bottom:0.5rem">Business Fluency</div>
+          <p style="font-family:var(--font-serif);font-size:0.95rem;font-weight:300;color:rgba(245,240,232,0.7);line-height:1.6">Every analysis ends with a recommendation a CMO can act on — not just findings. I bridge technical rigor and strategic judgment.</p>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);padding:1.5rem;border-left:2px solid #ff6b35">
+          <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#ff6b35;margin-bottom:0.5rem">Growth Trajectory</div>
+          <p style="font-family:var(--font-serif);font-size:0.95rem;font-weight:300;color:rgba(245,240,232,0.7);line-height:1.6">R → SQL → Tableau, and now Python. I'm on an intentional path toward full-stack marketing analytics, and I move fast.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="reveal">
+    <h2 class="contact-headline">Let's build something<br><em>remarkable</em> together.</h2>
+    <p class="contact-sub">
+      I'm actively seeking full-time opportunities in marketing analytics, consumer insights, or data strategy. If you're hiring analytical thinkers who can also tell the story — let's talk.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:aapatel15@usfca.edu" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        Email Me
+      </a>
+      <a href="https://www.linkedin.com/in/aayushi-patel-ap" target="_blank" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="#projects" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        View Projects
+      </a>
+      <a href="#" class="contact-link" onclick="alert('Please request resume via email — aapatel15@usfca.edu'); return false;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        Resume / CV
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2026 Aayushi Patel · Marketing Intelligence · USF</div>
+  <div class="footer-built">Crafted with <span>curiosity</span> · R · SQL · Tableau · Strategy</div>
+</footer>
+
+<script>
+  // Cursor
+  const dot = document.getElementById('cursorDot');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+  });
+  function animRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
+  document.querySelectorAll('a, button, .project-card, .pill').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      ring.style.width = '48px'; ring.style.height = '48px';
+      ring.style.borderColor = 'rgba(61,220,110,0.75)';
+    });
+    el.addEventListener('mouseleave', () => {
+      ring.style.width = '32px'; ring.style.height = '32px';
+      ring.style.borderColor = 'rgba(61,220,110,0.45)';
+    });
+  });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Pill hover interaction
+  document.querySelectorAll('.pill').forEach(p => {
+    p.addEventListener('mouseenter', () => p.classList.add('active'));
+    p.addEventListener('mouseleave', () => {
+      if (!p.dataset.keep) p.classList.remove('active');
+    });
+  });
+</script>
+</body>
+</html>
