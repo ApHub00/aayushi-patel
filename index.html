@@ -678,7 +678,31 @@
     transform: translateY(0);
   }
 
+  /* — Campaigns & Events CTA — */
+  .nav-links a.nav-new { color: var(--accent2); display: inline-flex; align-items: center; gap: 6px; }
+  .nav-links a.nav-new::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--accent2); animation: blink 1.5s infinite; }
+  .btn-campaigns {
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    border: 1px solid var(--accent2); color: var(--accent2);
+    padding: 0.85rem 2rem; text-decoration: none; transition: background 0.2s, color 0.2s;
+  }
+  .btn-campaigns:hover { background: var(--accent2); color: var(--bg); }
+  #campaigns-teaser { background: var(--bg2); padding: 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .teaser-inner { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: center; padding: 5rem 3rem; position: relative; overflow: hidden; }
+  .teaser-inner::before { content: ''; position: absolute; width: 520px; height: 520px; right: -8%; top: -30%; background: radial-gradient(circle, rgba(255,107,53,0.09) 0%, transparent 70%); pointer-events: none; }
+  .teaser-eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent2); margin-bottom: 1.2rem; }
+  .teaser-title { font-family: var(--font-serif); font-size: clamp(2.2rem, 4.5vw, 3.6rem); font-weight: 300; line-height: 1.05; margin-bottom: 1.2rem; }
+  .teaser-title em { color: var(--accent2); }
+  .teaser-desc { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 300; line-height: 1.7; color: rgba(245,240,232,0.7); max-width: 520px; margin-bottom: 1.6rem; }
+  .teaser-list { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+  .teaser-thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; position: relative; z-index: 1; }
+  .teaser-thumbs img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: top; border: 1px solid var(--border2); transition: transform 0.3s; }
+  .teaser-thumbs img:nth-child(2) { transform: translateY(-18px); }
+  .teaser-thumbs a:hover img { transform: translateY(-6px); }
+
   @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .teaser-inner { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 1.5rem; }
     #hero { grid-template-columns: 1fr; padding-top: 6rem; }
     .hero-right { padding-left: 0; margin-top: 3rem; }
     .about-grid { grid-template-columns: 1fr; gap: 3rem; }
@@ -702,6 +726,7 @@
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="campaigns.html" class="nav-new">Campaigns &amp; Events</a></li>
     <li><a href="#skills-section">Skills</a></li>
     <li><a href="#journey">Education</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -725,6 +750,7 @@
     </p>
     <div class="hero-btns">
       <a href="#projects" class="btn-primary">View Work</a>
+      <a href="campaigns.html" class="btn-campaigns">Campaigns &amp; Events →</a>
       <a href="#contact" class="btn-secondary">Get in Touch</a>
     </div>
   </div>
@@ -983,7 +1009,7 @@
           <span class="metric-val" style="color:var(--accent3)">9</span>
           <span class="metric-label">Deliverables</span>
         </div>
-        <a href="https://aphub00.github.io/aayushi-patel/canada-dry.pdf" target="_blank" class="view-btn yellow">View Project →</a>
+        <a href="https://aphub00.github.io/aayushi-patel/Canada-dry%20.pdf" target="_blank" class="view-btn yellow">View Project →</a>
       </div>
     </div>
 
@@ -1194,6 +1220,30 @@
     </div>
 
 
+  </div>
+</section>
+
+<!-- CAMPAIGNS & EVENTS TEASER -->
+<section id="campaigns-teaser">
+  <div class="teaser-inner">
+    <div class="reveal">
+      <div class="teaser-eyebrow">New · Beyond the dashboard</div>
+      <h2 class="teaser-title">Campaigns, content<br>&amp; <em>events.</em></h2>
+      <p class="teaser-desc">The other half of my work: 4 events for 100+ guests each as VP of Events, promo flyers and reels I created, the run-of-show behind a flagship awards night, and long-form writing including an AI handbook used across graduate cohorts.</p>
+      <div class="teaser-list">
+        <span class="pill">Event Marketing</span>
+        <span class="pill">Social Content</span>
+        <span class="pill">Short-Form Video</span>
+        <span class="pill">Copywriting</span>
+        <span class="pill">Run-of-Show Ops</span>
+      </div>
+      <a href="campaigns.html" class="btn-campaigns">Explore Campaigns &amp; Events →</a>
+    </div>
+    <div class="teaser-thumbs reveal" style="transition-delay:0.15s">
+      <a href="campaigns.html#events"><img src="assets/campaigns/pickleboo-flyer.jpg" alt="Pickle-Boo Tournament flyer" loading="lazy"></a>
+      <a href="campaigns.html#events"><img src="assets/campaigns/eoy-flyer.jpg" alt="End of Year Celebration flyer" loading="lazy"></a>
+      <a href="campaigns.html#events"><img src="assets/campaigns/strikes-flyer.jpg" alt="Spring Into Strikes flyer" loading="lazy"></a>
+    </div>
   </div>
 </section>
 
